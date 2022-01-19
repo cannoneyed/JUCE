@@ -88,10 +88,14 @@ public:
     }
 
     template <typename Function>
-    void callListenersForAllParents (ValueTree::Listener* listenerToExclude, Function fn) const
+    void callListenersForAllParents (ValueTree::Listener* listenerToExclude, Function fn)
     {
+        std::vector<SharedObject*> v;
         for (auto* t = this; t != nullptr; t = t->parent)
-            t->callListeners (listenerToExclude, fn);
+            v.push_back(t);
+        
+        for (auto it = v.rbegin(); it != v.rend(); ++it)
+            (*it)->callListeners (listenerToExclude, fn);
     }
 
     void sendPropertyChangeMessage (const Identifier& property, ValueTree::Listener* listenerToExclude = nullptr)
