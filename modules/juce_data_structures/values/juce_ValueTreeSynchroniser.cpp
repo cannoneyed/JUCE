@@ -155,6 +155,7 @@ void ValueTreeSynchroniser::valueTreeChildOrderChanged (ValueTree& parent, int o
     ValueTreeSynchroniserHelpers::writeHeader (*this, m, ValueTreeSynchroniserHelpers::childMoved, parent);
     m.writeCompressedInt (oldIndex);
     m.writeCompressedInt (newIndex);
+    
     stateChanged (m.getData(), m.getDataSize());
 }
 

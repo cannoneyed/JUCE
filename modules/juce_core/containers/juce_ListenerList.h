@@ -88,6 +88,20 @@ public:
         else
             jassertfalse;  // Listeners can't be null pointers!
     }
+    
+    //==============================================================================
+    /** Adds a listener to the front of the list.
+        A listener can only be added once, so if the listener is already in the list,
+        this method has no effect.
+        @see remove
+    */
+    void addToFront (ListenerClass* listenerToAdd)
+    {
+        if (listenerToAdd != nullptr && !listeners.contains( listenerToAdd ))
+            listeners.insert (0, listenerToAdd);
+        else
+            jassertfalse;  // Listeners can't be null pointers!
+    }
 
     /** Removes a listener from the list.
         If the listener wasn't in the list, this has no effect.

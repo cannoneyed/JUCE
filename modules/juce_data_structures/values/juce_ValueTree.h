@@ -550,6 +550,7 @@ public:
         @see removeListener
     */
     void addListener (Listener* listener);
+    void addListenerToFront (Listener* listener);
 
     /** Removes a listener that was previously added with addListener(). */
     void removeListener (Listener* listener);
